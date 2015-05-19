@@ -8,6 +8,11 @@ module.exports = function (grunt) {
                     { expand: true, cwd: 'src', src: ['**/*.html'], dest: 'build' },
                 ]
             },
+            deps: {
+                files: [
+                    { expand: true, cwd: 'node_modules/requirejs-text', src: ['text.js'], dest: 'build/js' },
+                ]
+            },
             fonts: {
                 files: [
                     { expand: true, cwd: 'node_modules/font-awesome/fonts', src: ['*'], dest: 'build/fonts/' },
@@ -16,13 +21,15 @@ module.exports = function (grunt) {
         },
 
         uglify: {
-            options: {
-                mangle: false,
-                sourceMap: true,
-            },
             js: {
+                options: {
+                    mangle: false,
+                    screwIE8: true,
+                    sourceMap: true,
+                    compress: false
+                },
                 files: {
-                    'build/js/bundle.js': ['node_modules/rx/dist/rx.all.js', 'node_modules/webrx/dist/web.rx.js', 'node_modules/requirejs/require.js', 'node_modules/requirejs-text/text.js']
+                    'build/js/bundle.js': ['node_modules/rx/dist/rx.all.js', 'node_modules/webrx/dist/web.rx.js', 'node_modules/requirejs/require.js']
                 }
             }
         },
@@ -32,7 +39,7 @@ module.exports = function (grunt) {
                 separator: '\n\n',
             },
             css: {
-                src: ['node_modules/font-awesome/css/font-awesome.min.css', "build/css/main.css"],
+                src: ['node_modules/font-awesome/css/font-awesome.min.css', "src/css/animations.css", "build/css/main.css" ],
                 dest: 'build/css/bundle.css',
             },
         },
@@ -67,7 +74,7 @@ module.exports = function (grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    'build/css/main.css': 'src/main.scss',   // 'destination': 'source'
+                    'build/css/main.css': 'src/css/main.scss',   // 'destination': 'source'
                 }
             }
         },
@@ -97,5 +104,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-execute');
 
-    grunt.registerTask("default", ["clean:build", 'uglify:js', "sass", 'concat:css', 'copy:main', 'copy:fonts', "connect", "execute:tsc", "watch"]);
+    grunt.registerTask("default", ["clean:build", 'uglify:js', "sass", 'concat:css', 'copy:main', 'copy:deps', 'copy:fonts', "connect", "execute:tsc", "watch"]);
 };
