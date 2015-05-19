@@ -15,13 +15,21 @@ module.exports = function (grunt) {
             }
         },
 
+        uglify: {
+            options: {
+                mangle: false,
+                sourceMap: true,
+            },
+            js: {
+                files: {
+                    'build/js/bundle.js': ['node_modules/rx/dist/rx.all.js', 'node_modules/webrx/dist/web.rx.js', 'node_modules/requirejs/require.js', 'node_modules/requirejs-text/text.js']
+                }
+            }
+        },
+
         concat: {
             options: {
                 separator: '\n\n',
-            },
-            js: {
-                src: ['node_modules/rx/dist/rx.all.min.js', 'node_modules/webrx/dist/web.rx.min.js'],
-                dest: 'build/js/bundle.js',
             },
             css: {
                 src: ['node_modules/font-awesome/css/font-awesome.min.css', "build/css/main.css"],
@@ -86,7 +94,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-execute');
 
-    grunt.registerTask("default", ["clean:build", 'concat:js', "sass", 'concat:css', 'copy:main', 'copy:fonts', "connect", "execute:tsc", "watch"]);
+    grunt.registerTask("default", ["clean:build", 'uglify:js', "sass", 'concat:css', 'copy:main', 'copy:fonts', "connect", "execute:tsc", "watch"]);
 };
