@@ -17,6 +17,11 @@ module.exports = function (grunt) {
                 files: [
                     { expand: true, cwd: 'node_modules/font-awesome/fonts', src: ['*'], dest: 'build/fonts/' },
                 ]
+            },
+            images: {
+                files: [
+                    { expand: true, cwd: 'src/images', src: ['*'], dest: 'build/images/' },
+                ]
             }
         },
 
@@ -39,7 +44,7 @@ module.exports = function (grunt) {
                 separator: '\n\n',
             },
             css: {
-                src: ['node_modules/font-awesome/css/font-awesome.min.css', "src/css/animations.css", "build/css/main.css" ],
+                src: ['node_modules/font-awesome/css/font-awesome.min.css', "src/css/reset.css", "src/css/animations.css", "build/css/main.css" ],
                 dest: 'build/css/bundle.css',
             },
         },
@@ -104,5 +109,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-execute');
 
-    grunt.registerTask("default", ["clean:build", 'uglify:js', "sass", 'concat:css', 'copy:main', 'copy:deps', 'copy:fonts', "connect", "execute:tsc", "watch"]);
+    grunt.registerTask("default", ["clean:build", 'uglify:js', "sass", 'concat:css', 'copy:main', 'copy:deps', 'copy:images', 'copy:fonts', "connect", "execute:tsc", "watch"]);
 };

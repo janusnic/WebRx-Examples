@@ -1,16 +1,20 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|Satisfy);
 
 $font-stack: 'Lato', Calibri, Arial, sans-serif;
-$primary-color: #333;
+$primary-color: #FFF;
 
 html {
   height: 100%; 
+  background-color: black;
 }
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
-  height: 100%; 
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow:hidden;
 }
 
 .pt-perspective {
@@ -23,12 +27,16 @@ body {
 }
 
 .pt-page {
+	margin: 0;
+	padding: 0;
+}
+
+.pt-page > div {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
-	visibility: hidden;
 	overflow: hidden;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
@@ -39,31 +47,60 @@ body {
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
 	transform-style: preserve-3d;
+	background: #7bb7fa;
+	
+	text-align: center;
+	padding: 20px;
 }
 
-.enter {
-    animation: moveFromTop .6s ease both;
-    animation-play-state: paused;
-    -webkit-animation: moveFromTop .6s ease both;
-    -webkit-animation-play-state: paused;
-    position: absolute;
+.pt-page h1 {
+	font-weight: 300;
+	font-size: 4.4em;
+	line-height: 1;
+	letter-spacing: 6px;
+	margin: 0;
+	top: 12%;
+	width: 100%;
+	text-transform: uppercase;
+	word-spacing: -0.3em;
 }
-.enter.start {
+
+.pt-page h1 span {
+	font-family: 'Satisfy', serif;
+	font-weight: 400;
+	font-size: 40%;
+	text-transform: none;
+	word-spacing: 0;
+	letter-spacing: 0;
+	display: block;
+	opacity: 0.4;
+}
+
+.pt-page h1 img {
+	height: 44px;
+	margin-right: 10px;
+	line-height: 1;
+	opacity: 0.4;
+}
+
+.pt-page h1 strong {
+	color: rgba(0,0,0,0.1);
+}
+
+.welcome h2 {
+	margin-top: 2em;
+}
+
+.paused {
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+}
+
+.running {
     animation-play-state: running;
     -webkit-animation-play-state: running;
 }
 
-.leave {
-    animation: moveToBottom .7s ease-in-out both;
-    animation-play-state: paused;
-    -webkit-animation: moveToBottom .7s ease-in-out both;
-    -webkit-animation-play-state: paused;
-    position: absolute;
-}
-.leave.start {
-    animation-play-state: running;
-    -webkit-animation-play-state: running;
-}
-.leave.complete {
+.hidden {
     display: none;
 }
