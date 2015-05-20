@@ -4,7 +4,7 @@
 requirejs.config({
     baseUrl: "/",
     paths: {
-        text: 'js/text'
+        'text': 'js/text'
     }
 });
 
@@ -15,6 +15,11 @@ wx.app.animation('move-to-right-unfold-left-leave', wx.animation("pt-page-moveTo
 // Push bottom / from top
 wx.app.animation('push-bottom-from-top-enter', wx.animation("pt-page-moveFromTop paused", "running", undefined));
 wx.app.animation('push-bottom-from-top-leave', wx.animation("pt-page-rotatePushBottom paused", "running", undefined));
+
+wx.app.component('state-monitor', {
+    viewModel: <wx.IComponentViewModelDescriptor> <any> { require: "js/components/state-monitor/ViewModel" },
+    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/state-monitor/index.html" }
+});
 
 wx.app.component('welcome', {
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/welcome/index.html" }
@@ -33,7 +38,9 @@ wx.router.state({
                 enter: "move-to-right-unfold-left-enter",
                 leave: "move-to-right-unfold-left-leave"
             }
-        }
+        },
+       
+        'state': "state-monitor"
     }
 }).state({
     name: "hello",

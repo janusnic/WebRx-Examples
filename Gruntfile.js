@@ -43,6 +43,10 @@ module.exports = function (grunt) {
             options: {
                 separator: '\n\n',
             },
+            js: {
+                src: ['node_modules/rx/dist/rx.all.min.js', "node_modules/webrx/dist/web.rx.js", "node_modules/requirejs/require.js" ],
+                dest: 'build/js/bundle.js',
+            },
             css: {
                 src: ['node_modules/font-awesome/css/font-awesome.min.css', "src/css/reset.css", "src/css/animations.css", "build/css/main.css" ],
                 dest: 'build/css/bundle.css',
@@ -109,5 +113,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-execute');
 
-    grunt.registerTask("default", ["clean:build", 'uglify:js', "sass", 'concat:css', 'copy:main', 'copy:deps', 'copy:images', 'copy:fonts', "connect", "execute:tsc", "watch"]);
+    grunt.registerTask("default", ["clean:build", 'concat:js', "sass", 'concat:css', 'copy:main', 'copy:deps', 'copy:images', 'copy:fonts', "connect", "execute:tsc", "watch"]);
 };
