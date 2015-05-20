@@ -21,6 +21,10 @@ wx.app.component('state-monitor', {
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/state-monitor/index.html" }
 });
 
+wx.app.component('header', {
+    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/header/index.html" }
+});
+
 wx.app.component('welcome', {
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/welcome/index.html" }
 });
@@ -40,7 +44,8 @@ wx.router.state({
             }
         },
        
-        'state': "state-monitor"
+        'state': "state-monitor",
+        'header': "header"
     }
 }).state({
     name: "hello",

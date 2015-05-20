@@ -1,10 +1,12 @@
 <div class="welcome">
-	<h1>
-		<img src='images/Logo.png' />
-		<strong>WebRx</strong>Examples
-	</h1>
-	<h2>Welcome to the WebRx Example Browser</h2>
+	<div data-bind="view: 'header'"></div>
+
+	<div class="content">
+		<h3>Welcome to the WebRx Example Browser</h3>
+	
+	    <p>Use the menu above to navigate.</p>
+	</div>
+	
 	<a data-bind="sref: 'hello'">Hello</a>
 	
 	<div data-bind="view: 'state'"></div>
-</div>

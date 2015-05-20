@@ -48,7 +48,7 @@ module.exports = function (grunt) {
                 dest: 'build/js/bundle.js',
             },
             css: {
-                src: ['node_modules/font-awesome/css/font-awesome.min.css', "src/css/reset.css", "src/css/animations.css", "build/css/main.css" ],
+                src: ['node_modules/font-awesome/css/font-awesome.min.css', "src/css/bootstrap.css", "src/css/roboto.css", "src/css/material.css", "src/css/ripples.css", "src/css/animations.css", "build/css/main.css" ],
                 dest: 'build/css/bundle.css',
             },
         },
