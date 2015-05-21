@@ -24,41 +24,46 @@ body {
   perspective: 1200px;
 }
 
-.pt-page {
+.pt-perspective > div {
+  display: block;
   margin: 0;
   padding: 0;
-}
-
-.pt-page > div {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   overflow: hidden;
+
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
+
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
+
+  /* Fix for IE11 which does not support preserve-3d */
+  -ms-transform: none;
+
   background: #7bb7fa;
 }
 
-.pt-page > div > div {
+.pt-perspective > div > div > div {
   max-width: $max-width;
   margin: 0 auto;
   height: 100%;
 }
 
-.pt-page > div > div .content {
+.pt-perspective > div > div > div .content {
   padding: 1em;
 }
 
-.pt-page h1 {
+h1.header {
   font-weight: 300;
   font-size: 3.6em;
   line-height: 1;
@@ -67,9 +72,12 @@ body {
   width: 100%;
   text-transform: uppercase;
   word-spacing: -0.3em;
+  margin-top: 1em;
+  margin-bottom: 0.75em;
+  display: inline-block;
 }
 
-.pt-page h1 span {
+h1.header span {
   font-family: 'Satisfy', serif;
   font-weight: 400;
   font-size: 40%;
@@ -80,7 +88,7 @@ body {
   opacity: 0.4;
 }
 
-.pt-page h1 img {
+h1.header img {
   height: 50px;
   padding: 0;
   margin: 0;
@@ -89,13 +97,8 @@ body {
   opacity: 0.4;
 }
 
-.pt-page h1 strong {
+h1.header strong {
   color: rgba(0, 0, 0, 0.1);
-}
-
-.header {
-  margin-bottom: 0.75em;
-  display: inline-block;
 }
 
 .stopped {
@@ -155,8 +158,3 @@ body {
 .state-monitor table tr td {
   padding-right: 1em;
 }
-
-.welcome .content {
-  display: inline-block;
-}
-

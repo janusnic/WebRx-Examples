@@ -155,13 +155,15 @@ this.nextExampleCmd = wx.command(param=> {
     this.currentExampleIndex(index);
 }, this);
 
-// go
-var syncUrl = wx.getSearchParameters()["rs"];
-
-if(!syncUrl) {
-    wx.router.go("$", {}, { location: wx.RouterLocationChangeMode.replace });
-} else {
-    wx.router.sync((<wx.IRoute> wx.router.get("$").url).stringify() + syncUrl);
-}
-
-wx.applyBindings(this);
+document.addEventListener("DOMContentLoaded", function(event) { 
+    // go
+    var syncUrl = wx.getSearchParameters()["rs"];
+    
+    if(!syncUrl) {
+        wx.router.go("$", {}, { location: wx.RouterLocationChangeMode.replace });
+    } else {
+        wx.router.sync((<wx.IRoute> wx.router.get("$").url).stringify() + syncUrl);
+    }
+    
+    wx.applyBindings(this);
+}.bind(this));

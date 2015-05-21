@@ -38,12 +38,12 @@ module.exports = function (grunt) {
             },
             css: {
                 src: [ 
+                    "src/css/animations.css", 
                     "src/css/bootstrap.css", 
                     'node_modules/font-awesome/css/font-awesome.min.css', 
                     "src/css/roboto.css", 
                     "src/css/material.css", 
                     "src/css/ripples.css", 
-                    "src/css/animations.css", 
                     "build/css/main.css" 
                 ],
                 dest: 'build/css/bundle.css',
