@@ -103,6 +103,8 @@ examples.forEach(function (x) {
     });
 });
 
+var defaultTitle = wx.app.title();
+
 // setup binding properties
 this.currentExampleIndex = wx.property(0);
 this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> examples[cei]).toProperty();
@@ -110,8 +112,11 @@ this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> examples[cei]).
 this.nextExampleCmd = wx.command(param=> {
     var index = this.currentExampleIndex();
     
+    // change state and title
     wx.router.go(examples[index].folder, {}, { location: wx.RouterLocationChangeMode.add });
+    wx.app.title(defaultTitle + " - " + examples[index].title)
     
+    // advance to next example
     if(index + 1 < examples.length - 1)
         index++;
     else
