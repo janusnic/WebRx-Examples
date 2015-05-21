@@ -25,28 +25,29 @@ module.exports = function (grunt) {
             }
         },
 
-        uglify: {
-            js: {
-                options: {
-                    mangle: false,
-                    screwIE8: true,
-                    sourceMap: true,
-                    compress: false
-                },
-                files: {
-                    'build/js/bundle.js': ['node_modules/rx/dist/rx.all.js', 'node_modules/webrx/dist/web.rx.js', 'node_modules/requirejs/require.js']
-                }
-            }
-        },
-
         concat: {
             options: {
                 separator: '\n\n',
             },
-            css: {
-                src: ['node_modules/font-awesome/css/font-awesome.min.css', "src/css/reset.css", "src/css/animations.css", "build/css/main.css" ],
-                dest: 'build/css/bundle.css',
+            js: {
+                src: [ 
+                    'node_modules/rx/dist/rx.all.js', 
+                    'node_modules/webrx/dist/web.rx.js', 
+                    'node_modules/requirejs/require.js' ],
+                dest: 'build/js/bundle.js',
             },
+            css: {
+                src: [ 
+                    "src/css/bootstrap.css", 
+                    'node_modules/font-awesome/css/font-awesome.min.css', 
+                    "src/css/roboto.css", 
+                    "src/css/material.css", 
+                    "src/css/ripples.css", 
+                    "src/css/animations.css", 
+                    "build/css/main.css" 
+                ],
+                dest: 'build/css/bundle.css',
+            }
         },
 
         watch: {
@@ -106,8 +107,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-execute');
 
-    grunt.registerTask("default", ["clean:build", 'uglify:js', "sass", 'concat:css', 'copy:main', 'copy:deps', 'copy:images', 'copy:fonts', "connect", "execute:tsc", "watch"]);
+    grunt.registerTask("default", ["clean:build", 'concat:js', "sass", 'concat:css', 'copy:main', 'copy:deps', 'copy:images', 'copy:fonts', "connect", "execute:tsc", "watch"]);
 };

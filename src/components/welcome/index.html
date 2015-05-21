@@ -1,10 +1,15 @@
 <div class="welcome">
-	<h1>
-		<img src='images/Logo.png' />
-		<strong>WebRx</strong>Examples
-	</h1>
+	<div class="content">
+		<div data-bind="view: 'header'"></div>
 
-	<h2>Welcome to the WebRx Example Browser</h2>
+		<h3>Welcome to WebRx Examples</h3>
+		<br>
+		<p>This application provides a browsable collection of examples implemented using the <a href="http://webrxjs.org">WebRx</a> Framework.</p>
+
+		<p>If you have an example of which you think that it might be a good fit for this collection, feel free to submit a <a href="https://github.com/WebRxJS/WebRx-Examples">Pull-Request</a> on GitHub.</p>
 	
-	<a data-bind="sref: 'hello'">Hello</a>
+		<button class="btn btn-primary" data-bind="text: 'Next: ' + $root.currentExample.title, command: $root.nextExampleCmd"></button>
+	</div>
+		
+	<div data-bind="view: 'state'"></div>
 </div>
