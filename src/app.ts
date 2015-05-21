@@ -8,6 +8,7 @@ requirejs.config({
     }
 });
 
+// register animations
 wx.app.animation('move-to-right-unfold-left-enter', wx.animation("pt-page-rotateUnfoldRight stopped", "running", undefined));
 wx.app.animation('move-to-right-unfold-left-leave', wx.animation("pt-page-moveToLeftFade stopped", "running", undefined));
 wx.app.animation('push-bottom-from-top-enter', wx.animation("pt-page-moveFromTop stopped", "running", undefined));
@@ -16,6 +17,7 @@ wx.app.animation('push-bottom-from-top-leave', wx.animation("pt-page-rotatePushB
 wx.app.animation('fadeIn', wx.animation("fadeIn stopped", "running", undefined));
 wx.app.animation('fadeOut', wx.animation("fadeOut stopped", "running", undefined));
 
+// register components
 wx.app.component('state-monitor', {
     viewModel: <wx.IComponentViewModelDescriptor> <any> { require: "js/components/state-monitor/ViewModel" },
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/state-monitor/index.html" }
@@ -38,16 +40,7 @@ wx.app.component('welcome', {
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/welcome/index.html" }
 });
 
-interface IExample {
-    title: string;
-    folder: string;
-    hasViewModel: boolean;
-}
-
-var examples:Array<IExample> = [
-    { title: "Hello World", folder: "hello", hasViewModel: false },
-];
-    
+// setup root state
 wx.router.state({
     name: "$",
     views: {
@@ -67,18 +60,19 @@ wx.router.state({
         },
         'header': "header"
     }
-}).state({
-    name: "hello",
-    views: {
-        'main': {
-            component: "hello",
-            animations: {
-                enter: "push-bottom-from-top-enter",
-                leave: "push-bottom-from-top-leave"
-            }
-        }
-    }
 });
+
+interface IExample {
+    title: string;
+    folder: string;
+    hasViewModel: boolean;
+}
+
+var examples:Array<IExample> = [
+    { title: "Hello World", folder: "hello", hasViewModel: false },
+];
+
+// configure examples
 examples.forEach(function (x) {
     if (x.hasViewModel) {
         wx.app.component(x.folder, {
@@ -144,6 +138,7 @@ examples.forEach(x=> {
     });  
 });
 
+// setup binding properties
 this.currentExampleIndex = wx.property(0);
 this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> examples[cei]).toProperty();
 
@@ -160,6 +155,7 @@ this.nextExampleCmd = wx.command(param=> {
     this.currentExampleIndex(index);
 }, this);
 
+// go
 var syncUrl = wx.getSearchParameters()["rs"];
 
 if(!syncUrl) {
