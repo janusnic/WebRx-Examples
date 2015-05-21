@@ -44,9 +44,12 @@ wx.app.component('welcome', {
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/welcome/index.html" }
 });
 
+this.baseUrl = "/";
+
 // setup root state
 wx.router.state({
     name: "$",
+    url: this.baseUrl,
     views: {
         'main': {
             component: "welcome",
