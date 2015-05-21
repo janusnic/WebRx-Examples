@@ -25,14 +25,29 @@ wx.app.component('header', {
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/header/index.html" }
 });
 
+wx.app.component('state-monitor', {
+    viewModel: <wx.IComponentViewModelDescriptor> <any> { require: "js/components/state-monitor/ViewModel" },
+    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/state-monitor/index.html" }
+});
+
+wx.app.component('header', {
+    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/header/index.html" }
+});
+
 wx.app.component('welcome', {
     template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/welcome/index.html" }
 });
 
-var examples = [
+interface IExample {
+    title: string;
+    folder: string;
+    hasViewModel: boolean;
+}
+
+var examples:Array<IExample> = [
     { title: "Hello World", folder: "hello", hasViewModel: false },
 ];
-
+    
 wx.router.state({
     name: "$",
     views: {
@@ -93,6 +108,7 @@ examples.forEach(function (x) {
 this.currentExampleIndex = wx.property(0);
 this.currentExample = wx.whenAny(this.currentExampleIndex, function (cei) { return examples[cei]; }).toProperty();
 
+<<<<<<< HEAD
 this.nextExampleCmd = wx.command(function (param) {
     var index = this.currentExampleIndex();
     wx.router.go(examples[index].folder, {}, { location: 1 });
@@ -100,6 +116,48 @@ this.nextExampleCmd = wx.command(function (param) {
         index++;
     else
         index = 0;
+=======
+// Register example components & states
+examples.forEach(x=> {
+    if(x.hasViewModel) {
+        wx.app.component(x.folder, {
+            viewModel: <wx.IComponentViewModelDescriptor> <any> { require: wx.formatString("js/components/{0}/ViewModel", x.folder) },
+            template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/index.html", x.folder) }
+        });
+    } else {
+        wx.app.component(x.folder, {
+            template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/hello/index.html" }
+        });
+    }
+
+    wx.router.state({
+        name: x.folder,
+        views: {
+            'main': {
+                component: x.folder,
+                animations: {
+                    enter: "push-bottom-from-top-enter",
+                    leave: "push-bottom-from-top-leave"
+                }
+            }
+        }
+    });  
+});
+
+this.currentExampleIndex = wx.property(0);
+this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> examples[cei]).toProperty();
+
+this.nextExampleCmd = wx.command(param=> {
+    var index = this.currentExampleIndex();
+    
+    wx.router.go(examples[index].folder, {}, { location: wx.RouterLocationChangeMode.add });
+    
+    if(index + 1 < examples.length - 1)
+        index++;
+    else
+        index = 0;
+        
+>>>>>>> origin/master
     this.currentExampleIndex(index);
 }, this);
 
