@@ -108,7 +108,6 @@ examples.forEach(function (x) {
 this.currentExampleIndex = wx.property(0);
 this.currentExample = wx.whenAny(this.currentExampleIndex, function (cei) { return examples[cei]; }).toProperty();
 
-<<<<<<< HEAD
 this.nextExampleCmd = wx.command(function (param) {
     var index = this.currentExampleIndex();
     wx.router.go(examples[index].folder, {}, { location: 1 });
@@ -116,7 +115,8 @@ this.nextExampleCmd = wx.command(function (param) {
         index++;
     else
         index = 0;
-=======
+});
+
 // Register example components & states
 examples.forEach(x=> {
     if(x.hasViewModel) {
@@ -157,7 +157,6 @@ this.nextExampleCmd = wx.command(param=> {
     else
         index = 0;
         
->>>>>>> origin/master
     this.currentExampleIndex(index);
 }, this);
 
