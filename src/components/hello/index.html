@@ -8,11 +8,7 @@
 				
 		<p>The two text boxes are bound to observable properties on a view-model. The full name display is bound to an output property, whose value is calculated in terms of the observables.</p>
 
-		<div class="example-content">
-			<p><label>First name</label> <input class="form-control" data-bind="textInput: @firstName, hasFocus: true" /></p>
-			<p><label>Last name</label> <input class="form-control" data-bind="textInput: @lastName" /></p>
-			<p><label>Full name</label><h2 class="result" data-bind="text: fullName"></h2></p>
-		</div>
+		<div data-bind="component: 'hello-content'" class="example-content"></div>
 
 		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.curentExampleViewModelSourceLink }">Script Source</a>
 		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.curentExampleViewSourceLink }">HTML Source</a>

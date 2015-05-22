@@ -93,6 +93,12 @@ examples.forEach(function (x) {
             template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/hello/index.html" }
         });
     }
+
+    wx.app.component(x.folder + "-content", {
+        viewModel: <wx.IComponentViewModelDescriptor> <any> { require: wx.formatString("js/components/{0}/example", x.folder) },
+        template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/example.html", x.folder) }
+    });
+
     wx.router.state({
         name: x.folder,
         views: {
@@ -116,11 +122,11 @@ this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> examples[cei])
 .toProperty();
 
 this.curentExampleViewSourceLink = wx.whenAny(this.currentExampleIndex, cei=> wx.formatString(
-    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/index.html", examples[cei].folder))
+    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.html", examples[cei].folder))
 .toProperty();
 
 this.curentExampleViewModelSourceLink = wx.whenAny(this.currentExampleIndex, cei=> wx.formatString(
-    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/ViewModel.ts", examples[cei].folder))
+    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.ts", examples[cei].folder))
 .toProperty();
 
 this.nextExample = wx.whenAny(this.currentExampleIndex, cei=> {
