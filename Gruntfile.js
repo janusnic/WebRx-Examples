@@ -16,6 +16,7 @@ module.exports = function (grunt) {
             fonts: {
                 files: [
                     { expand: true, cwd: 'node_modules/font-awesome/fonts', src: ['*'], dest: 'build/fonts/' },
+                    { expand: true, cwd: 'src/fonts', src: ['*'], dest: 'build/fonts/' },
                 ]
             },
             images: {
@@ -41,7 +42,6 @@ module.exports = function (grunt) {
                     "src/css/animations.css", 
                     "src/css/bootstrap.css", 
                     'node_modules/font-awesome/css/font-awesome.min.css', 
-                    "src/css/roboto.css", 
                     "src/css/material.css", 
                     "src/css/ripples.css", 
                     "build/css/main.css" 
