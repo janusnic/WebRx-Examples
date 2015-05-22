@@ -1,0 +1,21 @@
+<div class="output-properties">
+	<div class="content">
+		<div data-bind="view: 'header'"></div>
+			
+		<h2 class="example-title">Example: Output-Properties</h2>
+
+		<p>Output properties are read-only properties which are backed by an Rx-Observable.</p>
+		
+		<p>
+		Output properties are read-only, but will still fire change notifications. 
+		This example displays a countdown-timer that counts down from 10 to 1 at a one second interval.
+		</p> 
+
+		<div data-bind="component: 'output-properties-content'" class="example-content"></div>
+
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewModelSourceLink }">Script Source</a>
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewSourceLink }">HTML Source</a>
+		<a class="btn btn-success btn-sm" data-bind="sref: 'observable-list'">Next: Observable-List</a>
+	</div>
+	<div data-bind="view: 'state'"></div>
+</div>

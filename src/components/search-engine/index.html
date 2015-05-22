@@ -1,0 +1,26 @@
+<div class="search-engine">
+	<div class="content">
+		<div data-bind="view: 'header'"></div>
+			
+		<h2 class="example-title">Example: Mini Search-Engine</h2>
+
+		<p>Here we utilize <a href="https://duckduckgo.com/">DuckDuckGo's REST Api</a> to carry out Web-Searches.</p>
+		
+		<p>Implementation Details:</p>
+		
+		<ul>
+		<li>No search occurs unless the query has actually changed</li>
+		<li>User input is throttled to 200ms to reduce server load</li>
+		<li>Only results from the most recently issued request will be displayed</li>
+		<li>Results are filtered to only include displayable items</li>
+		<li>A maximum of ten items will be shown</li>
+		</ul>
+		
+		<div data-bind="component: 'search-engine-content'" class="example-content search-engine"></div>
+
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewModelSourceLink }">Script Source</a>
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewSourceLink }">HTML Source</a>
+		<a class="btn btn-success btn-sm" data-bind="sref: '$'">Next: Intro</a>
+	</div>
+	<div data-bind="view: 'state'"></div>
+</div>

@@ -1,0 +1,20 @@
+<div class="observable-list">
+	<div class="content">
+		<div data-bind="view: 'header'"></div>
+			
+		<h2 class="example-title">Example: Observable-List</h2>
+
+		<p>If you want to detect and respond to changes on one object, you'd use observable-properties. 
+			If you want to detect and respond to changes of a collection of things, use an observable-list.</p> 
+		<p>This is useful in many scenarios where you're displaying or editing multiple values and need 
+			repeated sections of UI to appear and disappear as items are added and removed.
+		</p> 
+
+		<div data-bind="component: 'observable-list-content'" class="example-content"></div>
+
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewModelSourceLink }">Script Source</a>
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewSourceLink }">HTML Source</a>
+		<a class="btn btn-success btn-sm" data-bind="sref: 'observable-list-projection'">Next: Observable-List-Projection</a>
+	</div>
+	<div data-bind="view: 'state'"></div>
+</div>

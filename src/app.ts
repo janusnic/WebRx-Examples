@@ -21,6 +21,8 @@ wx.app.animation('scale-down-from-top-leave', wx.animation("pt-page-scaleDown st
 
 wx.app.animation('fadeIn', wx.animation("fadeIn stopped", "running", undefined));
 wx.app.animation('fadeOut', wx.animation("fadeOut stopped", "running", undefined));
+wx.app.animation('fadeInFast', wx.animation("fadeInFast stopped", "running", undefined));
+wx.app.animation('fadeOutFast', wx.animation("fadeOutFast stopped", "running", undefined));
 
 // register components
 wx.app.component('state-monitor', {
@@ -73,16 +75,20 @@ wx.router.state({
 interface IExample {
     title: string;
     folder: string;
-    hasViewModel: boolean;
+    hasViewModel?: boolean;
     params?: any;
 }
 
 var examples:Array<IExample> = [
-    { title: "Hello World", folder: "hello", hasViewModel: false },
-    { title: "Stateful Hello World", folder: "hello-stateful", hasViewModel: false, params: { firstName: undefined, lastName: undefined } },
+    { title: "Hello World", folder: "hello" },
+    { title: "Stateful Hello World", folder: "hello-stateful", params: { firstName: undefined, lastName: undefined } },
+    { title: "Output-Properties", folder: "output-properties" },
+    { title: "Observable-List", folder: "observable-list" },
+    { title: "Observable-List-Projection", folder: "observable-list-projection" },
+    { title: "Mini Search-Engine", folder: "search-engine" },
 ];
 
-var transitions = ["push-bottom-from-top", "scale-down-from-top", "move-to-right-unfold-left"];
+var transitions = ["push-bottom-from-top", "scale-down-from-top"];
 var currentTransition = 0;
 
 // configure examples

@@ -1,0 +1,13 @@
+<p>
+	<label><input class="radio radio-inline" type='radio' name="type" value='all' data-bind='selectedValue: @typeToShow' />All</label>
+	<label><input class="radio radio-inline" type='radio' name="type" value='rock' data-bind='selectedValue: @typeToShow' />Rocky planets</label>
+	<label><input class="radio radio-inline" type='radio' name="type" value='gasgiant' data-bind='selectedValue: @typeToShow' />Gas giants</label>
+	<input class="form-control" type='text' name="filter" placeholder="Search" data-bind='textInput: @filter' />
+</p>
+
+<div class="planets" data-bind='foreach: { data: planetsToShow, itemEnter: "fadeInFast", itemLeave: "fadeOutFast" }, style: { height: planetsToShow.length * 25 + "px" }'>
+	<div data-bind='style: { top: $index * 25 + "px" }, css: "planet " + type, text: name'> </div>
+</div>
+
+<button class="btn btn-primary btn-sm" data-bind='command: { command: addPlanetCmd, parameter: "rock" }'>Add rocky planet</button>
+<button class="btn btn-primary btn-sm" data-bind='command: { command: addPlanetCmd, parameter: "gasgiant" }'>Add gas giant</button>

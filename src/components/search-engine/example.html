@@ -1,0 +1,16 @@
+<div id="main-logo-container">
+  <h1 id="main-logo" class="logo"><span>WebR</span><span class="x">X</span><span>&nbsp;/ search</span></h1>
+</div>
+ 
+<input id="query" placeholder="Search" class="form-control" data-bind="textInput: @query, hasFocus: true" />
+ 
+<div id="results">
+  <h3 data-bind="text: results.length ? results.length + ' results' : ''"></h3>
+
+  <div data-bind="foreach: results">
+    <div class="hit">
+      <a data-bind="attr: { href: FirstURL }" target="_blank"><h4 data-bind="text: Text"></h4></a>
+      <p data-bind="text: FirstURL"></p> 
+    </div>
+  </div>
+</div>

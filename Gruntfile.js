@@ -40,7 +40,8 @@ module.exports = function (grunt) {
                     'node_modules/rx/dist/rx.all.js', 
                     'node_modules/webrx/dist/web.rx.js', 
                     'node_modules/requirejs/require.js',
-                    'node_modules/highlight/lib/vendor/highlight.js/highlight.pack.js' 
+                    'node_modules/jquery/dist/jquery.min.js',
+//                    'node_modules/highlight/lib/vendor/highlight.js/highlight.pack.js' 
                 ],
                 dest: 'build/js/bundle.js',
             },
@@ -51,7 +52,7 @@ module.exports = function (grunt) {
                     'node_modules/font-awesome/css/font-awesome.min.css', 
                     "src/css/material.css", 
                     "src/css/ripples.css",
-                    "node_modules/highlight/lib\vendor/highlight.js/styles/github.css", 
+//                    "node_modules/highlight/lib\vendor/highlight.js/styles/github.css", 
                     "build/css/main.css" 
                 ],
                 dest: 'build/css/bundle.css',

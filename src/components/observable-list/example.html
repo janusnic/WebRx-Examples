@@ -1,0 +1,7 @@
+<label>New item</label>
+<input class="form-control" data-bind='textInput: @itemToAdd' placeholder="New Item" />
+<button class="btn btn-primary" data-bind="command: addItemCmd">Add</button>
+<button class="btn btn-danger" data-bind="command: removeItemCmd">Remove</button>
+<br/>
+<p>Your items:</p>
+<wx-select params="items: items, selectedValue: @selectedItem, size: 6"></wx-select>
