@@ -1,5 +1,6 @@
 /// <reference path="typings/web.rx.d.ts" />
 /// <reference path="typings/require.d.ts" />
+/// <reference path="typings/highlightjs.d.ts" />
 
 requirejs.config({
     baseUrl: "/",
@@ -76,7 +77,7 @@ interface IExample {
 }
 
 var examples:Array<IExample> = [
-    { title: "Hello World", folder: "hello", hasViewModel: false },
+    { title: "Hello World", folder: "hello", hasViewModel: true },
 ];
 
 // configure examples
