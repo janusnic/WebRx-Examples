@@ -74,11 +74,16 @@ interface IExample {
     title: string;
     folder: string;
     hasViewModel: boolean;
+    params?: any;
 }
 
 var examples:Array<IExample> = [
-    { title: "Hello World", folder: "hello", hasViewModel: true },
+    { title: "Hello World", folder: "hello", hasViewModel: false },
+    { title: "Stateful Hello World", folder: "hello-stateful", hasViewModel: false, params: { firstName: undefined, lastName: undefined } },
 ];
+
+var transitions = ["push-bottom-from-top", "scale-down-from-top", "move-to-right-unfold-left"];
+var currentTransition = 0;
 
 // configure examples
 examples.forEach(function (x) {
@@ -90,7 +95,7 @@ examples.forEach(function (x) {
     }
     else {
         wx.app.component(x.folder, {
-            template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/hello/index.html" }
+            template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/index.html", x.folder) }
         });
     }
 
@@ -101,71 +106,32 @@ examples.forEach(function (x) {
 
     wx.router.state({
         name: x.folder,
+        params: x.params,
         views: {
             'main': {
                 component: x.folder,
                 animations: {
-                    enter: "push-bottom-from-top-enter",
-                    leave: "push-bottom-from-top-leave"
+                    enter: transitions[currentTransition] + "-enter",
+                    leave: transitions[currentTransition] + "-leave"
                 }
             }
         }
     });
+    
+    currentTransition++;
+    if(currentTransition > transitions.length - 1)
+        currentTransition = 0;
 });
 
 var defaultTitle = wx.app.title();
 
-// setup binding properties
-this.currentExampleIndex = wx.property(0);
-
-this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> examples[cei])
+this.currentExampleViewSourceLink = wx.whenAny(wx.router.current, state=> state ? wx.formatString(
+    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.html", state.name) : "")
 .toProperty();
 
-this.curentExampleViewSourceLink = wx.whenAny(this.currentExampleIndex, cei=> wx.formatString(
-    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.html", examples[cei].folder))
+this.currentExampleViewModelSourceLink = wx.whenAny(wx.router.current, state=> state ? wx.formatString(
+    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.ts", state.name) : "")
 .toProperty();
-
-this.curentExampleViewModelSourceLink = wx.whenAny(this.currentExampleIndex, cei=> wx.formatString(
-    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.ts", examples[cei].folder))
-.toProperty();
-
-this.nextExample = wx.whenAny(this.currentExampleIndex, cei=> {
-    var index = cei; 
-
-    if(index + 1 < examples.length - 1)
-        index++;
-    else
-        index = 0;
-
-    return examples[index]; 
-}).toProperty();
-
-this.prevExample = wx.whenAny(this.currentExampleIndex, cei=> {
-    var index = cei; 
-
-    if(index - 1 >= 0)
-        index--;
-    else
-        index = examples.length - 1;
-
-    return examples[index]; 
-}).toProperty();
-
-this.nextExampleCmd = wx.command(param=> {
-    var index = this.currentExampleIndex();
-    
-    // change state and title
-    wx.router.go(examples[index].folder, {}, { location: wx.RouterLocationChangeMode.add });
-    wx.app.title(defaultTitle + " - " + examples[index].title)
-    
-    // advance to next example
-    if(index + 1 < examples.length - 1)
-        index++;
-    else
-        index = 0;
-        
-    this.currentExampleIndex(index);
-}, this);
 
 // go
 var syncUrl = wx.getSearchParameters()["rs"];

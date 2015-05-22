@@ -5,7 +5,8 @@ class ViewModel {
     public lastName = wx.property('Simpson');
     
     public fullName = wx.whenAny(this.firstName, this.lastName, function(firstName, lastName) { 
-      return firstName + " " + lastName; }).toProperty();
+      return firstName + " " + lastName; 
+    }).toProperty();
 }
 
 export = ViewModel;

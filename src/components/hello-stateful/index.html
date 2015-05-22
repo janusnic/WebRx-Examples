@@ -2,13 +2,13 @@
 	<div class="content">
 		<div data-bind="view: 'header'"></div>
 			
-		<h2 class="example-title">Example: Hello-World</h2>
+		<h2 class="example-title">Example: Stateful Hello-World</h2>
 
-		<p>This basic example demonstrates how the values of two input elements can be combined to automatically populate a result field while the user is typing.</p> 
+		<p>This example behaves exactly like the previous example with the difference that this version
+			preserves its state even when the user navigates away and returns later on. 
+		</p> 
 				
-		<p>The two text boxes are bound to observable properties on a view-model. The full name display is bound to an output property, whose value is calculated in terms of the observables.</p>
-
-		<div data-bind="component: 'hello-content'" class="example-content"></div>
+		<div data-bind="component: 'hello-stateful-content'" class="example-content"></div>
 
 		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewModelSourceLink }">Script Source</a>
 		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewSourceLink }">HTML Source</a>
