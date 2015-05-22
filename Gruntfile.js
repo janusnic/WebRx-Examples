@@ -8,6 +8,11 @@ module.exports = function (grunt) {
                     { expand: true, cwd: 'src', src: ['**/*.html'], dest: 'build' },
                 ]
             },
+            ts: {
+                files: [
+                    { expand: true, cwd: 'src', src: ['**/*.ts', '!**/typings/**'], dest: 'build/ts' },
+                ]
+            },
             deps: {
                 files: [
                     { expand: true, cwd: 'node_modules/requirejs-text', src: ['text.js'], dest: 'build/js' },
@@ -53,7 +58,7 @@ module.exports = function (grunt) {
         watch: {
             ts: {
                 files: ["src/**/*.ts"],
-                tasks: ['execute:tsc']
+                tasks: ['execute:tsc', 'copy:ts']
             },
             html: {
                 files: ["src/**/*.html"],
@@ -109,5 +114,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-execute');
 
-    grunt.registerTask("default", ["clean:build", 'concat:js', "sass", 'concat:css', 'copy:main', 'copy:deps', 'copy:images', 'copy:fonts', "connect", "execute:tsc", "watch"]);
+    grunt.registerTask("default", ["clean:build", 'concat:js', "sass", 'concat:css', 'copy:main', 'copy:ts', 'copy:deps', 'copy:images', 'copy:fonts', "connect", "execute:tsc", "watch"]);
 };
