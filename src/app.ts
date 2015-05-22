@@ -112,8 +112,15 @@ var defaultTitle = wx.app.title();
 // setup binding properties
 this.currentExampleIndex = wx.property(0);
 
-this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> 
-    examples[cei])
+this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> examples[cei])
+.toProperty();
+
+this.curentExampleViewSourceLink = wx.whenAny(this.currentExampleIndex, cei=> wx.formatString(
+    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/index.html", examples[cei].folder))
+.toProperty();
+
+this.curentExampleViewModelSourceLink = wx.whenAny(this.currentExampleIndex, cei=> wx.formatString(
+    "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/ViewModel.ts", examples[cei].folder))
 .toProperty();
 
 this.nextExample = wx.whenAny(this.currentExampleIndex, cei=> {

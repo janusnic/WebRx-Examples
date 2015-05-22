@@ -14,7 +14,9 @@
 			<p><label>Full name</label><h2 class="result" data-bind="text: fullName"></h2></p>
 		</div>
 
-		<button class="btn btn-primary btn-sm next" data-bind="text: 'Next: ' + $root.nextExample.title, command: $root.nextExampleCmd"></button>
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.curentExampleViewModelSourceLink }">Script Source</a>
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.curentExampleViewSourceLink }">HTML Source</a>
+		<button class="btn btn-success btn-sm" data-bind="text: 'Next: ' + $root.nextExample.title, command: $root.nextExampleCmd"></button>
 	</div>
 	<div data-bind="view: 'state'"></div>
 </div>
