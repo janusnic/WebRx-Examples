@@ -111,7 +111,32 @@ var defaultTitle = wx.app.title();
 
 // setup binding properties
 this.currentExampleIndex = wx.property(0);
-this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> examples[cei]).toProperty();
+
+this.currentExample = wx.whenAny(this.currentExampleIndex, cei=> 
+    examples[cei])
+.toProperty();
+
+this.nextExample = wx.whenAny(this.currentExampleIndex, cei=> {
+    var index = cei; 
+
+    if(index + 1 < examples.length - 1)
+        index++;
+    else
+        index = 0;
+
+    return examples[index]; 
+}).toProperty();
+
+this.prevExample = wx.whenAny(this.currentExampleIndex, cei=> {
+    var index = cei; 
+
+    if(index - 1 >= 0)
+        index--;
+    else
+        index = examples.length - 1;
+
+    return examples[index]; 
+}).toProperty();
 
 this.nextExampleCmd = wx.command(param=> {
     var index = this.currentExampleIndex();

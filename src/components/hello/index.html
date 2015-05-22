@@ -1,12 +1,20 @@
 <div class="hello">
 	<div class="content">
 		<div data-bind="view: 'header'"></div>
-	
-		<p><label>First name</label> <input class="form-control" data-bind="textInput: @firstName" /></p>
-		<p><label>Last name</label> <input class="form-control" data-bind="textInput: @lastName" /></p>
-		<p><label>Full name</label><h2 class="result" data-bind="text: fullName"></h2></p>
+			
+		<h2 class="example-title" data-bind="text: 'Example: ' + $root.currentExample.title"></h2>
 
-		<button class="btn btn-primary" data-bind="text: 'Next: ' + $root.currentExample.title, command: $root.nextExampleCmd"></button>
+		<p>This basic example demonstrates how the values of two input elements can be combined to automatically populate a result field while the user is typing.</p> 
+				
+		<p>The two text boxes are bound to observable properties on a view-model. The full name display is bound to an output property, whose value is calculated in terms of the observables.</p>
+
+		<div class="example-content">
+			<p><label>First name</label> <input class="form-control" data-bind="textInput: @firstName, hasFocus: true" /></p>
+			<p><label>Last name</label> <input class="form-control" data-bind="textInput: @lastName" /></p>
+			<p><label>Full name</label><h2 class="result" data-bind="text: fullName"></h2></p>
+		</div>
+
+		<button class="btn btn-primary btn-sm next" data-bind="text: 'Next: ' + $root.nextExample.title, command: $root.nextExampleCmd"></button>
 	</div>
 	<div data-bind="view: 'state'"></div>
 </div>
