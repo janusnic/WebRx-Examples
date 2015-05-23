@@ -1,6 +1,5 @@
 /// <reference path="typings/web.rx.d.ts" />
 /// <reference path="typings/require.d.ts" />
-/// <reference path="typings/highlightjs.d.ts" />
 
 //this.baseUrl = "/";
 this.baseUrl = "/examples/";
@@ -83,8 +82,9 @@ var examples:Array<IExample> = [
 
 var transitions = ["push-bottom-from-top", "scale-down-from-top"];
 var currentTransition = 0;
+var defaultTitle = wx.app.title();
 
-examples.forEach(function (x) {
+examples.forEach(x=> {
     if (x.hasViewModel) {
         wx.app.component(x.folder, {
             viewModel: { require: wx.formatString("js/components/{0}/ViewModel", x.folder) },
@@ -115,7 +115,7 @@ examples.forEach(function (x) {
             }
         },
         onEnter: (config)=> {
-            wx.app.title(x.title)
+            wx.app.title(defaultTitle + " - " + x.title)
         }
     });
     
@@ -124,8 +124,7 @@ examples.forEach(function (x) {
         currentTransition = 0;
 });
 
-var defaultTitle = wx.app.title();
-
+// helper observables for current source links
 this.currentExampleViewSourceLink = wx.whenAny(wx.router.current, state=> state ? wx.formatString(
     "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.html", state.name) : "")
 .toProperty();

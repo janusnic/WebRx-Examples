@@ -10,7 +10,7 @@ class ViewModel {
         
         this.countDown = obs.toProperty();
         
-        this.goCmd = wx.command(function() {
+        this.goCmd = wx.command(()=> {
             obs.connect();
         });
     }

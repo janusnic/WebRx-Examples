@@ -18,11 +18,10 @@ class ViewModel {
     public results = this.query.changed
         .distinctUntilChanged()
         .throttle(200)
-        .select(function(x) { return search(x); })
+        .select((x)=> search(x))
         .switch()
-        .select(function(x) { return x.filter(
-          function(y) { return y.Text && y.FirstURL; })})
-        .select(function(x) { return x.slice(0, 10) })
+        .select((x)=> x.filter((y)=> y.Text && y.FirstURL ))
+        .select((x)=> x.slice(0, 10))
         .toProperty();  
 }
 

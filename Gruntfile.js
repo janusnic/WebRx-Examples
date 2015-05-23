@@ -37,8 +37,12 @@ module.exports = function (grunt) {
             },
             js: {
                 src: [ 
-                    'node_modules/rx/dist/rx.all.js', 
-                    'node_modules/webrx/dist/web.rx.js', 
+//                    'node_modules/rx/dist/rx.all.js', 
+//                    'node_modules/webrx/dist/web.rx.js', 
+
+                    'node_modules/rx/dist/rx.all.min.js', 
+                    'node_modules/webrx/dist/web.rx.min.js', 
+
                     'node_modules/requirejs/require.js',
                     'node_modules/jquery/dist/jquery.min.js',
 //                    'node_modules/highlight/lib/vendor/highlight.js/highlight.pack.js' 

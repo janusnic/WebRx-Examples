@@ -5,7 +5,7 @@ class ViewModel {
     public itemToAdd = wx.property("");
     public selectedItem = wx.property(null);
 
-    public addItemCmd = wx.command(function () {
+    public addItemCmd = wx.command(()=> {
         if (this.itemToAdd() != "") {
             // add the item
             this.items.add(this.itemToAdd());
@@ -17,13 +17,13 @@ class ViewModel {
         return itemToAdd.length > 0
     }), this);
     
-    public removeItemCmd = wx.command(function () {
+    public removeItemCmd = wx.command(()=> {
         // remove the item
         this.items.remove(this.selectedItem());
 
         // clear selection
         this.selectedItem(null);
-    }, wx.whenAny(this.selectedItem, function (selectedItem) {
+    }, wx.whenAny(this.selectedItem, (selectedItem)=> {
         return selectedItem != null;
     }), this);
 }
