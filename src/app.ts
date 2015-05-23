@@ -27,16 +27,7 @@ wx.app.animation('fadeOut', wx.animation("fadeOut stopped", "running", undefined
 wx.app.animation('fadeInFast', wx.animation("fadeInFast stopped", "running", undefined));
 wx.app.animation('fadeOutFast', wx.animation("fadeOutFast stopped", "running", undefined));
 
-// register components
-wx.app.component('state-monitor', {
-    viewModel: { require: "js/components/state-monitor/ViewModel" },
-    template: { require: "text!components/state-monitor/index.html" }
-});
-
-wx.app.component('header', {
-    template: { require: "text!components/header/index.html" }
-});
-
+// register shared components
 wx.app.component('state-monitor', {
     viewModel: { require: "js/components/state-monitor/ViewModel" },
     template: { require: "text!components/state-monitor/index.html" }
@@ -73,6 +64,7 @@ wx.router.state({
     }
 });
 
+// configure examples
 interface IExample {
     title: string;
     folder: string;
@@ -92,7 +84,6 @@ var examples:Array<IExample> = [
 var transitions = ["push-bottom-from-top", "scale-down-from-top"];
 var currentTransition = 0;
 
-// configure examples
 examples.forEach(function (x) {
     if (x.hasViewModel) {
         wx.app.component(x.folder, {
@@ -122,6 +113,9 @@ examples.forEach(function (x) {
                     leave: transitions[currentTransition] + "-leave"
                 }
             }
+        },
+        onEnter: (config)=> {
+            wx.app.title(x.title)
         }
     });
     
