@@ -12,19 +12,19 @@ requirejs.config({
 });
 
 // register animations
-wx.app.animation('move-to-right-unfold-left-enter', wx.animation("pt-page-rotateUnfoldRight stopped", "running", undefined));
-wx.app.animation('move-to-right-unfold-left-leave', wx.animation("pt-page-moveToLeftFade stopped", "running", undefined));
+wx.app.animation('move-to-right-unfold-left-enter', wx.animation("pt-page-rotateUnfoldRight stopped", "running"));
+wx.app.animation('move-to-right-unfold-left-leave', wx.animation("pt-page-moveToLeftFade stopped", "running"));
 
-wx.app.animation('push-bottom-from-top-enter', wx.animation("pt-page-moveFromTop stopped", "running", undefined));
-wx.app.animation('push-bottom-from-top-leave', wx.animation("pt-page-rotatePushBottom stopped", "running", undefined));
+wx.app.animation('push-bottom-from-top-enter', wx.animation("pt-page-moveFromTop stopped", "running"));
+wx.app.animation('push-bottom-from-top-leave', wx.animation("pt-page-rotatePushBottom stopped", "running"));
 
-wx.app.animation('scale-down-from-top-enter', wx.animation("pt-page-moveFromTop pt-page-ontop stopped", "running", undefined));
-wx.app.animation('scale-down-from-top-leave', wx.animation("pt-page-scaleDown stopped", "running", undefined));
+wx.app.animation('scale-down-from-top-enter', wx.animation("pt-page-moveFromTop pt-page-ontop stopped", "running"));
+wx.app.animation('scale-down-from-top-leave', wx.animation("pt-page-scaleDown stopped", "running"));
 
-wx.app.animation('fadeIn', wx.animation("fadeIn stopped", "running", undefined));
-wx.app.animation('fadeOut', wx.animation("fadeOut stopped", "running", undefined));
-wx.app.animation('fadeInFast', wx.animation("fadeInFast stopped", "running", undefined));
-wx.app.animation('fadeOutFast', wx.animation("fadeOutFast stopped", "running", undefined));
+wx.app.animation('fadeIn', wx.animation("fadeIn stopped", "running"));
+wx.app.animation('fadeOut', wx.animation("fadeOut stopped", "running"));
+wx.app.animation('fadeInFast', wx.animation("fadeInFast stopped", "running"));
+wx.app.animation('fadeOutFast', wx.animation("fadeOutFast stopped", "running"));
 
 // register shared components
 wx.app.component('state-monitor', {
@@ -73,7 +73,7 @@ interface IExample {
 
 var examples:Array<IExample> = [
     { title: "Hello World", folder: "hello" },
-    { title: "Stateful Hello World", folder: "hello-stateful", params: { firstName: undefined, lastName: undefined } },
+    { title: "Stateful Hello World", folder: "hello-stateful" },
     { title: "Output-Properties", folder: "output-properties" },
     { title: "Observable-List", folder: "observable-list" },
     { title: "Observable-List-Projection", folder: "observable-list-projection" },

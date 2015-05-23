@@ -239,7 +239,7 @@ declare module wx {
         };
     }
     interface IAnimationRegistry {
-        animation(name: string, filter: IAnimation): IAnimationRegistry;
+        animation(name: string, animation: IAnimation): IAnimationRegistry;
         animation(name: string): IAnimation;
     }
     interface IModuleDescriptor {
@@ -307,6 +307,11 @@ declare module wx {
         params?: any;
         animations?: IViewAnimationDescriptor;
     }
+    interface IViewTransition {
+        view: string;
+        fromComponent?: string;
+        toComponent: string;
+    }
     const enum RouterLocationChangeMode {
         add = 1,
         replace = 2,
@@ -329,6 +334,7 @@ declare module wx {
         sync(url?: string): void;
         state(config: IRouterStateConfig): IRouter;
         current: IObservableProperty<IRouterState>;
+        viewTransitions: Rx.Observable<IViewTransition>;
         updateCurrentStateParams(withParamsAction: (params: any) => void): void;
         go(to: string, params?: Object, options?: IStateChangeOptions): void;
         url(state: string, params?: {}): string;
@@ -724,7 +730,7 @@ declare module wx {
         add: boolean;
         remove: boolean;
     }
-    function animation(prepareTransitionClass: string | Array<string> | Array<IAnimationCssClassInstruction>, startTransitionClass: string | Array<string> | Array<IAnimationCssClassInstruction>, completeTransitionClass: string | Array<string> | Array<IAnimationCssClassInstruction>): IAnimation;
+    function animation(prepareTransitionClass: string | Array<string> | Array<IAnimationCssClassInstruction>, startTransitionClass: string | Array<string> | Array<IAnimationCssClassInstruction>, completeTransitionClass?: string | Array<string> | Array<IAnimationCssClassInstruction>): IAnimation;
     function animation(run: (element: HTMLElement, params?: any) => Rx.Observable<any>, prepare?: (element: HTMLElement, params?: any) => void, complete?: (element: HTMLElement, params?: any) => void): IAnimation;
 }
 declare module wx {
@@ -778,17 +784,22 @@ declare module wx {
     }
 }
 declare module wx {
-    module internal {
-        var viewBindingConstructor: any;
-    }
-}
-declare module wx {
     function route(route: any, rules?: any): IRoute;
 }
 declare module wx {
+    module internal {
+        interface IRouterInternals {
+            viewTransitionsSubject: Rx.Subject<IViewTransition>;
+        }
+    }
     var router: IRouter;
     module internal {
         var routerConstructor: any;
+    }
+}
+declare module wx {
+    module internal {
+        var viewBindingConstructor: any;
     }
 }
 declare module wx {
