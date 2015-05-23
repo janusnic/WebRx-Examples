@@ -2,8 +2,11 @@
 /// <reference path="typings/require.d.ts" />
 /// <reference path="typings/highlightjs.d.ts" />
 
+//this.baseUrl = "/";
+this.baseUrl = "/examples/";
+
 requirejs.config({
-    baseUrl: "/",
+    baseUrl: this.baseUrl,
     paths: {
         'text': 'js/text'
     }
@@ -26,28 +29,26 @@ wx.app.animation('fadeOutFast', wx.animation("fadeOutFast stopped", "running", u
 
 // register components
 wx.app.component('state-monitor', {
-    viewModel: <wx.IComponentViewModelDescriptor> <any> { require: "js/components/state-monitor/ViewModel" },
-    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/state-monitor/index.html" }
+    viewModel: { require: "js/components/state-monitor/ViewModel" },
+    template: { require: "text!components/state-monitor/index.html" }
 });
 
 wx.app.component('header', {
-    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/header/index.html" }
+    template: { require: "text!components/header/index.html" }
 });
 
 wx.app.component('state-monitor', {
-    viewModel: <wx.IComponentViewModelDescriptor> <any> { require: "js/components/state-monitor/ViewModel" },
-    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/state-monitor/index.html" }
+    viewModel: { require: "js/components/state-monitor/ViewModel" },
+    template: { require: "text!components/state-monitor/index.html" }
 });
 
 wx.app.component('header', {
-    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/header/index.html" }
+    template: { require: "text!components/header/index.html" }
 });
 
 wx.app.component('welcome', {
-    template: <wx.IComponentTemplateDescriptor> <any> { require: "text!components/welcome/index.html" }
+    template: { require: "text!components/welcome/index.html" }
 });
-
-this.baseUrl = "/";
 
 // setup root state
 wx.router.state({
@@ -95,19 +96,19 @@ var currentTransition = 0;
 examples.forEach(function (x) {
     if (x.hasViewModel) {
         wx.app.component(x.folder, {
-            viewModel: <wx.IComponentViewModelDescriptor> <any> { require: wx.formatString("js/components/{0}/ViewModel", x.folder) },
-            template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/index.html", x.folder) }
+            viewModel: { require: wx.formatString("js/components/{0}/ViewModel", x.folder) },
+            template: { require: wx.formatString("text!components/{0}/index.html", x.folder) }
         });
     }
     else {
         wx.app.component(x.folder, {
-            template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/index.html", x.folder) }
+            template: { require: wx.formatString("text!components/{0}/index.html", x.folder) }
         });
     }
 
     wx.app.component(x.folder + "-content", {
-        viewModel: <wx.IComponentViewModelDescriptor> <any> { require: wx.formatString("js/components/{0}/example", x.folder) },
-        template: <wx.IComponentTemplateDescriptor> <any> { require: wx.formatString("text!/components/{0}/example.html", x.folder) }
+        viewModel: { require: wx.formatString("js/components/{0}/example", x.folder) },
+        template: { require: wx.formatString("text!components/{0}/example.html", x.folder) }
     });
 
     wx.router.state({

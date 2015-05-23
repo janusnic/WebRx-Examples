@@ -201,14 +201,12 @@ declare module wx {
         binding(name: string): IBindingHandler;
     }
     interface IComponentTemplateDescriptor {
-        (params?: any): string | Node[];
         require?: string;
         promise?: Rx.IPromise<Node[]>;
         resolve?: string;
         element?: string | Node;
     }
     interface IComponentViewModelDescriptor {
-        (params: any): any;
         require?: string;
         promise?: Rx.IPromise<string>;
         resolve?: string;
@@ -217,8 +215,8 @@ declare module wx {
     interface IComponentDescriptor {
         require?: string;
         resolve?: string;
-        template?: string | Node[] | IComponentTemplateDescriptor;
-        viewModel?: Array<any> | IComponentViewModelDescriptor;
+        template?: string | Node[] | IComponentTemplateDescriptor | ((params?: any) => string | Node[]);
+        viewModel?: Array<any> | IComponentViewModelDescriptor | ((params: any) => any);
         preBindingInit?: string;
         postBindingInit?: string;
     }
