@@ -15,9 +15,9 @@ class Todo {
         this.completed(completed);
     }
 
-    public title = wx.property();
+    public title = wx.property<string>();
     public completed = wx.property<boolean>();
-    public editing = wx.property(false);
+    public editing = wx.property<boolean>(false);
 }
 
 class ViewModel implements Rx.IDisposable {
