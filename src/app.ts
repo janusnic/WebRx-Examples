@@ -71,7 +71,7 @@ interface IExample {
     params?: any;
 }
 
-var examples:Array<IExample> = [
+var examples: Array<IExample> = [
     { title: "Hello World", folder: "hello" },
     { title: "Stateful Hello World", folder: "hello-stateful" },
     { title: "TodoMVC", folder: "todomvc" },
@@ -115,29 +115,29 @@ examples.forEach(x=> {
                 }
             }
         },
-        onEnter: (config)=> {
+        onEnter: (config) => {
             wx.app.title(defaultTitle + " - " + x.title)
         }
     });
-    
+
     currentTransition++;
-    if(currentTransition > transitions.length - 1)
+    if (currentTransition > transitions.length - 1)
         currentTransition = 0;
 });
 
 // helper observables for current source links
 this.currentExampleViewSourceLink = wx.whenAny(wx.router.current, state=> state ? wx.formatString(
     "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.html", state.name) : "")
-.toProperty();
+    .toProperty();
 
 this.currentExampleViewModelSourceLink = wx.whenAny(wx.router.current, state=> state ? wx.formatString(
     "https://github.com/WebRxJS/WebRx-Examples/tree/master/src/components/{0}/example.ts", state.name) : "")
-.toProperty();
+    .toProperty();
 
 // go
 var syncUrl = wx.getSearchParameters()["rs"];
 
-if(!syncUrl) {
+if (!syncUrl) {
     wx.router.go("$", {}, { location: wx.RouterLocationChangeMode.replace });
 } else {
     wx.router.sync((<wx.IRoute> wx.router.get("$").url).stringify() + syncUrl);
