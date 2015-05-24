@@ -21,7 +21,7 @@ class Todo {
 }
 
 class ViewModel implements Rx.IDisposable {
-    constructor() {
+	constructor() {
 		// restore current todo and displayMode from routing-state
 		this.displayMode(wx.router.current().params[displayModeStateKey] || displayModeAll);
 		this.current(wx.router.current().params[todoStateKey] || "");
@@ -40,7 +40,7 @@ class ViewModel implements Rx.IDisposable {
 		Rx.Observable.merge(<Rx.Observable<any>> this.todos.listChanged, this.todos.itemChanged)
 			.throttle(500)
 			.subscribeOnNext(() => {
-				localStorage[localStorageKey] = JSON.stringify(this.todos.map(x=> ({ title: x.title(), completed: x.completed() })));
+			localStorage[localStorageKey] = JSON.stringify(this.todos.map(x=> ({ title: x.title(), completed: x.completed() })));
 		}, this);
         
 		// preserve current todo and displayMode in routing-state
@@ -55,9 +55,9 @@ class ViewModel implements Rx.IDisposable {
 				params[todoStateKey] = todo;
 			})
 		}));
-    }
+	}
 
-    public todos = wx.list<Todo>();
+	public todos = wx.list<Todo>();
 	public current = wx.property<string>();
 	public displayMode = wx.property<string>(displayModeAll);
 	
