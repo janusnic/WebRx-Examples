@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "amd",
         "noImplicitAny": false,
-        "removeComments": true,
+        "removeComments": false,
         "preserveConstEnums": true,
         "emitDecoratorMetadata": true,
         "rootDir": "../src",
