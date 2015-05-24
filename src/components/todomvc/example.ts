@@ -26,9 +26,8 @@ class ViewModel implements Rx.IDisposable {
         this.displayMode(wx.router.current().params[displayModeStateKey] || displayModeAll);
         this.current(wx.router.current().params[todoStateKey] || "");
 
-        var todos = localStorage[localStorageKey] ? JSON.parse(localStorage[localStorageKey]) : [];
-
-        // map array of passed in todos to an observableArray of Todo objects
+        // load todos from localStorage
+        let todos = localStorage[localStorageKey] ? JSON.parse(localStorage[localStorageKey]) : [];
         this.todos.addRange(todos.map(todo=> new Todo(todo.title, todo.completed)));
 
         // we want to get notified of changes to any of the todos contained in the list
