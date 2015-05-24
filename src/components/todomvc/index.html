@@ -1,0 +1,20 @@
+<div class="todomvc">
+	<div class="content">
+		<div data-bind="view: 'header'"></div>
+			
+		<h2 class="example-title">Example: TodoMVC</h2>
+
+		<p> The <a href="http://todomvc.com/">TodoMVC</a> project was created with the goal of helping developers to decide which of the 
+			many Javascript MV* frameworks is the best fit for their project. 
+			TodoMVC offers the same Todo application implemented using MV* concepts in most of the popular JavaScript MV* frameworks of today.</p>
+
+		<p>This example is a replica of <a href="http://todomvc.com/examples/webrx/">WebRx's official TodoMVC Implementation</a></p>
+		
+		<div data-bind="component: 'todomvc-content'" class="example-content"></div>
+
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewModelSourceLink }">Script Source</a>
+		<a class="btn btn-primary btn-sm" target="_blank" data-bind="attr: { href: $root.currentExampleViewSourceLink }">HTML Source</a>
+		<a class="btn btn-success btn-sm" data-bind="sref: 'output-properties'">Next: Output-Properties</a>
+	</div>
+	<div data-bind="view: 'state'"></div>
+</div>

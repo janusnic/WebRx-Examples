@@ -74,6 +74,7 @@ interface IExample {
 var examples:Array<IExample> = [
     { title: "Hello World", folder: "hello" },
     { title: "Stateful Hello World", folder: "hello-stateful" },
+    { title: "TodoMVC", folder: "todomvc" },
     { title: "Output-Properties", folder: "output-properties" },
     { title: "Observable-List", folder: "observable-list" },
     { title: "Observable-List-Projection", folder: "observable-list-projection" },

@@ -1,0 +1,55 @@
+<div id="todoapp">
+	<div id="header">
+		<h1>todos</h1>
+		<input class="form-control" autofocus data-bind="textInput: @current,
+			keyPress: { 'enter': { command: addCmd, parameter: $data } }"
+			id="new-todo" placeholder="What needs to be done?">
+	</div>
+
+	<div data-bind="visible: todos.length" id="main">
+		<ul data-bind="foreach: filteredTodos" id="todo-list">
+			<li data-bind="css: { completed: completed, editing: editing }">
+				<div class="view">
+					<input class="toggle" data-bind="checked: @completed" type="checkbox">
+					
+					<label data-bind="text: title, event: {
+						dblclick: { command: $parent.editItemCmd, parameter: $data } }">
+					</label>
+
+					<button class="destroy" data-bind="command: { command: $parent.removeCmd, parameter: $data }"></button>
+				</div>
+
+				<input class="edit form-control" class="edit" data-bind="textInput: @title,
+					hasFocus: { property: editing, delay: true },
+					event: {
+						blur: { command: $parent.saveEditingCmd, parameter: $data } },
+					keyPress: {
+						'enter': { command: $parent.saveEditingCmd, parameter: $data },
+						'esc': { command: $parent.cancelEditingCmd, parameter: $data } }">
+			</li>
+		</ul>
+	</div>
+
+	<div data-bind="visible: completedCount || remainingCount" id="footer">
+		<span id="todo-count"><strong data-bind="text: remainingCount">0</strong>
+		<span data-bind="text: remainingCount === 1 ? 'item' : 'items'"></span> left</span>
+
+		<ul id="filters">
+			<li>
+				<a href="#" data-bind="command: { command: changeDisplayModeCmd, parameter: 'all' }, css: { active: displayMode === 'all' }">All</a>
+			</li>
+
+			<li>
+				<a href="#" data-bind="command: { command: changeDisplayModeCmd, parameter: 'active' }, css: { active: displayMode === 'active' }">Active</a>
+			</li>
+
+			<li>
+				<a href="#" data-bind="command: { command: changeDisplayModeCmd, parameter: 'completed' }, css: { active: displayMode === 'completed' }">Completed</a>
+			</li>
+		</ul>
+
+		<div id="footer-buttons">
+			<button class="btn btn-danger btn-sm" data-bind="visible: completedCount, command: removeCompletedCmd" id="clear-completed">Clear completed</button>
+		</div>
+	</div>
+</div>

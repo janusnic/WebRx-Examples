@@ -7,14 +7,14 @@ class ViewModel {
             .take(11)
             .concat(Rx.Observable.return(<any> "BOOM"))
             .publish();
-        
+
         this.countDown = obs.toProperty();
-        
-        this.goCmd = wx.command(()=> {
+
+        this.goCmd = wx.command(() => {
             obs.connect();
         });
     }
-    
+
     public countDown: wx.IObservableProperty<any>;
     public goCmd: wx.ICommand<any>;
 }

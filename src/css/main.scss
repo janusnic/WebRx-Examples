@@ -230,11 +230,11 @@ body {
   margin-top: 0;
 }
 
-.example-content.observable-list-projection .planets {
+.observable-list-projection .example-content .planets {
     position: relative;
 }
 
-.example-content.observable-list-projection .planet {
+.observable-list-projection .example-content .planet {
     position: absolute; 
     background-color: #bbdefb;
     color: #303030;
@@ -245,74 +245,253 @@ body {
     transition: top 0.3s ease, opacity 0.9s ease;
 }
 
-.example-content.observable-list-projection .planet.rock {
+.observable-list-projection .example-content .planet.rock {
     background-color: #f0f0f0;
 }
 
-.example-content.observable-list-projection input {
+.observable-list-projection .example-content input {
     vertical-align: middle;
     margin-bottom: 0.4em;
     margin-right: 0.25em;
 }
 
-.example-content.observable-list-projection label {
+.observable-list-projection .example-content label {
     margin-right: 0.6em;
 }
 
-.example-content.observable-list-projection li {
+.observable-list-projection .example-content li {
     list-style-type: disc;
     margin-left: 20px;
 }
 
 
-.example-content.search-engine {
+.search-engine .example-content {
 }
 
-.example-content.search-engine input {
+.search-engine .example-content input {
   display: inline-block !important;
   width: 100% !important;
 }
 
-.example-content.search-engine #results {
+.search-engine .example-content #results {
   display: inline-block;
   width: 70% !important;
 }
 
-.example-content.search-engine .hit {
+.search-engine .example-content .hit {
   text-align: left;
 }
 
-.example-content.search-engine .hit p {
+.search-engine .example-content .hit p {
   color: #006621;
 }
 
-.example-content.search-engine h3 {
+.search-engine .example-content h3 {
   color: #f8f8f8;
   font-size: 90%;
   font-weight: normal;
   text-align: left;
 }
 
-.example-content.search-engine .hit h4 {
+.search-engine .example-content .hit h4 {
   margin-bottom: 0.15em;
   line-height: 1.3em;
-  color: #f0f0f0;
+  color: #ffffff;
 }
 
-.example-content.search-engine #main-logo-container {
+.search-engine .example-content #main-logo-container {
     line-height: 2em;
     margin-bottom: 1em;
 }
 
-.example-content.search-engine #main-logo {
+.search-engine .example-content #main-logo {
     font-size: 400%;
     margin: 0;
     text-shadow: 0 0 3px #808080;
 }
 
-.example-content.search-engine .logo .x {
+.search-engine .example-content .logo .x {
     font-weight: bold;
     color: #b7178c;
+}
+
+
+.todomvc .example-content #header h1 {
+  font-size: 40px;
+}
+
+.todomvc .example-content #filters {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.todomvc .example-content label {
+	font-weight: normal;
+  margin: 0;
+}
+
+.todomvc .example-content input {
+  color: white;
+}
+
+.todomvc .example-content #footer {
+	display: table;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+
+.todomvc .example-content #todo-count {
+  text-align: left;
+  width: 25%;
+}
+.todomvc .example-content #filters {
+  text-align: center;
+  width: 50%;
+}
+.todomvc .example-content #footer-buttons {
+  text-align: right;
+  width: 25%;
+  display: table-cell;
+}
+
+
+.todomvc .example-content #filters {
+  display: table-cell;
+}
+
+.todomvc .example-content #filters li {
+	display: inline;
+}
+
+.todomvc .example-content #filters li a {
+	color: inherit;
+	margin: 3px;
+	padding: 3px 7px;
+	text-decoration: none;
+	border: 1px solid transparent;
+	border-radius: 3px;
+}
+
+.todomvc .example-content #filters li a.active,
+.todomvc .example-content #filters li a:hover {
+	border-color: rgba(0, 0, 0, 0.2);
+}
+
+.todomvc .example-content #todo-count {
+  display: table-cell;
+}
+
+.todomvc .example-content #clear-completed, .todomvc .example-content #clear-completed:active {
+  margin: 0;
+}
+
+.todomvc .example-content #new-todo {
+  	font-size: 24px;
+}
+
+.todomvc .example-content #todo-list button,
+.todomvc .example-content #todo-list input[type="checkbox"],
+.todomvc .example-content #toggle-all {
+  outline: none;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.todomvc .example-content #todo-list li.editing .view {
+	display: none;
+}
+
+.todomvc .example-content #todo-list {
+  padding: 0;
+  list-style: none;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.todomvc .example-content #todo-list li  {
+  position: relative;
+	font-size: 24px;
+}
+ 
+.todomvc .example-content #todo-list li .toggle,
+.todomvc .example-content #toggle-all {
+	text-align: center;
+	width: 40px;
+	/* auto, since non-WebKit browsers doesn't support input styling */
+	height: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	border: none; /* Mobile Safari */
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.todomvc .example-content #todo-list li .toggle:after,
+.todomvc .example-content #toggle-all:after {
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+}
+
+.todomvc .example-content #todo-list li .toggle:checked:after,
+.todomvc .example-content #toggle-all:checked:after {
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#319f34" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+}
+
+.todomvc .example-content #todo-list li .destroy {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	font-size: 30px;
+	color: #cc9a9a;
+	margin-bottom: 11px;
+	transition: color 0.2s ease-out;
+}
+
+.todomvc .example-content #todo-list li .destroy:hover {
+	color: #f44336;
+}
+
+.todomvc .example-content #todo-list li .destroy:after {
+	content: 'x';
+}
+
+.todomvc .example-content #todo-list li:hover .destroy {
+	display: block;
+}
+
+.todomvc .example-content #todo-list li label {
+  white-space: pre;
+  word-break: break-word;
+  padding: 5px 60px 10px 15px;
+  margin-left: 45px;
+  display: block;
+  line-height: 1.2;
+  transition: color 0.4s;
+}
+
+.todomvc .example-content #todo-list li.completed label {
+	color: #d9d9d9;
+	text-decoration: line-through;
+}
+
+.todomvc .example-content #todo-list li .edit {
+  display: none;
+	font-size: 24px;
+  margin-left: 60px;
+  width: calc(100% - 60px);
+  margin-bottom: 9px;
+}
+
+.todomvc .example-content #todo-list li.editing .edit {
+  display: block;
 }
 
 @media only screen and (max-width: 768px) {

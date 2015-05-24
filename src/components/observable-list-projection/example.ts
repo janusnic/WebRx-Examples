@@ -11,22 +11,22 @@ class ViewModel {
         { name: "Uranus", type: "gasgiant" },
         { name: "Neptune", type: "gasgiant" },
     ]);
-                
+
     public typeToShow = wx.property("all");
     public filter = wx.property<string>();
     public displayAdvancedOptions = wx.property(false);
 
-    public addPlanetCmd = wx.command((type)=> {
+    public addPlanetCmd = wx.command((type) => {
         this.planets.push({ name: "New planet", type: type });
     }, this);
 
     public planetsToShow = this.planets.project(function(planet) {
         var desiredType = this.typeToShow();
         var result = desiredType === "all" || planet.type === desiredType;
-        
-        if(result && this.filter())
+
+        if (result && this.filter())
             result = planet.name.toLowerCase().indexOf(this.filter().toLowerCase()) !== -1;
-        
+
         return result;
     }.bind(this), Rx.Observable.merge(this.typeToShow.changed, this.filter.changed));
 }
